@@ -1,0 +1,39 @@
+<md-dialog aria-label="Import New Gateway Language Bible">
+  <form>
+    <md-toolbar class="md-accent">
+      <div class="md-toolbar-tools">
+        <h2>Import New Gateway Language Bible</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+					X
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content class="dialog-content">
+      <md-input-container class="md-block dialog-content">
+        <label>Bible ID</label>
+        <input ng-model="bible.id">
+      </md-input-container>
+      <md-input-container class="md-block dialog-content">
+        <label>Language Code</label>
+        <input ng-model="bible.languageCode">
+      </md-input-container>
+      <md-input-container class="md-block dialog-content">
+        <label>Version</label>
+        <input ng-model="bible.id">
+      </md-input-container>
+      <md-input-container class="md-block dialog-content">
+        <label>URL/File</label>
+        <input ng-model="bible.id">
+      </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button ng-click="answer('Submit')" >
+        Submit
+      </md-button>
+      <md-button ng-click="cancel()" style="margin-right:20px;" >
+        Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

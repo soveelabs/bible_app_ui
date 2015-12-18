@@ -1,0 +1,28 @@
+app: 
+  build: .
+  command: npm run dev-start
+  volumes:
+    - .:/usr/src/app
+  ports:
+    - '3001:3000'
+  environment:
+    NODE_ENV: development
+    PORT: 3000
+    REDIS_HOST: redis
+    REDIS_PORT: 6379
+    AUTH_HOST: https://staging-auth.sovee.com
+    AUTH_URL: https://staging-auth.sovee.com
+    AUTH_TOKEN: fe56002db2632cd72daff4ac496aac1cfec7577b
+    ALCHEMY_HOST: https://staging-alchemy.cloud.sovee.com
+    SE_HOST: https://staging-smartengine.sovee.com
+    GOOGLE_API_HOST: https://www.googleapis.comdd
+    GOOGLE_KEY: AIzaSyB4s38tQEoxcyQRQytflU_KmfujdeS5ij8
+    DETECT_LANGUAGE_HOST: http://ws.detectlanguage.com
+    DETECT_LANGUAGE_KEY: cb2531d34b748193d2c45902d69e8860
+    DYNO: localhost
+    BIBLE_API: https://staging-bible-api.sovee.com
+  links:
+    - redis
+
+redis:
+  image: redis:latest

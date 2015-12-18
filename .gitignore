@@ -1,0 +1,10 @@
+node_modules/
+.sass-cache
+*~
+*.swp
+/bower_components
+newrelic_agent.log
+src/css/
+npm-debug.log
+sftp-config.json
+public/

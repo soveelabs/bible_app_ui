@@ -1,0 +1,60 @@
+{
+  "name": "offline-bible-app-ui",
+  "description": "The front-end UI for the offline bible app",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soveelabs/offline-bible-app-ui.git"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node app.js",
+    "build-bwr": "gulp bwr",
+    "build": "gulp build",
+    "dev-start": "gulp"
+  },
+  "dependencies": {
+    "body-parser": "~1.12.0",
+    "compression": "~1.4.1",
+    "connect-redis": "^2.2.0",
+    "del": "^1.1.1",
+    "ejs": "~2.3.1",
+    "errorface": "^0.1.2",
+    "express": "~4.12.0",
+    "express-session": "^1.10.4",
+    "express-state": "^1.2.0",
+    "glob": "~4.4.1",
+    "gulp": "~3.8.10",
+    "gulp-bower": "0.0.10",
+    "gulp-concat": "^2.5.2",
+    "gulp-filter": "^2.0.2",
+    "gulp-jshint": "^1.10.0",
+    "gulp-less": "~3.0.1",
+    "gulp-minify-css": "^1.1.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-nodemon": "~1.0.4",
+    "gulp-order": "^1.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^3.0.1",
+    "gulp-rev-collector": "^0.1.4",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "jshint-stylish": "^1.0.1",
+    "main-bower-files": "^2.6.2",
+    "method-override": "~2.3.0",
+    "morgan": "~1.5.0",
+    "newrelic": "https://github.com/soveelabs/node-newrelic.git",
+    "node-auth": "git+https://firma8deploy:NGSUqNqLMnmSLt7qd@bitbucket.org/firma8/nodeauth.git#v2.0.2",
+    "node-health": "git+https://e35b04c1ca33733d7b97ab0ca4abda1aca97c2d8:x-oauth-basic@github.com/soveelabs/node-health.git",
+    "request": "^2.53.0",
+    "require-dir": "^0.3.0",
+    "serve-favicon": "~2.2.0"
+  },
+  "devDependencies": {
+    "chai": "^2.1.2",
+    "mocha": "^2.2.1",
+    "nock": "^1.2.0",
+    "sinon": "^1.14.1",
+    "supertest": "^0.15.0"
+  }
+}
