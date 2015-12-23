@@ -1,7 +1,24 @@
 <div class="content-wrapper">
-  <h1>bibles</h1>
-  <h3>bible id: {{ bible_id }}</h3>
+
   <md-content flex layout-padding>
-    {{ bible_data }} 
+
+  <md-toolbar class="md-theme-light">
+    <h2 class="md-toolbar-tools">
+      <span>Bibles</span>
+    </h2>
+  </md-toolbar>
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="bible in bible_data">
+        <div class="md-list-item-text">
+          <h4>BibleId: {{bible.bibleId}}</h4>
+          <h4>Version: {{bible.version}}</h4>
+          <h4>Url: {{bible.bibleUrl}}</h4>
+        </div>
+        <p align="right">
+          <md-button class="md-primary" ng-href="/#/books/bible_id={{bible.bibleId}}" target="_blank">Primary Link</md-button>
+        </p>
+      </md-list-item>
+    </md-list>
+
   </md-content>
-</div>
+
