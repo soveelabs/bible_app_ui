@@ -22,7 +22,6 @@ var routes = {
   },
   books: function (req, res, next) {
     var q = req.query;
-    console.log(q.bible_id + "i am here ");
     BibleAPI.getBooks(config.auth_token, q.bible_id, function(err, books_res) {
       if (err) { return res.status(500).json({error: err}); }
 

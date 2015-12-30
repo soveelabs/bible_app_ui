@@ -13,7 +13,7 @@
           templateUrl: '/partials/bibles.html',
           controller: 'BiblesController'
         })
-        .when('/books/:book_id?', {
+        .when('/books/:bible_id?', {
           templateUrl: '/partials/books.html',
           controller: 'BooksController'
         })
