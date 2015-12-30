@@ -5,8 +5,8 @@ Offline Bible App - UI in text and get back a translation
 
 1. Clone repo
 2. Run `docker-compose build`
-3. Run `docker-compose run app npm run build-bwr`
-4. Run `docker-compose run app npm install`
+3. Run `docker-compose run app npm install`
+4. Run `docker-compose run app npm run build-bwr`
 5. Run `docker-compose up`
 
 ## Docker Compose
