@@ -21,6 +21,10 @@
           templateUrl: '/partials/chapters.html', 
           controller: 'ChapterController'
         })
+	.when('/:bible_id/translations', { 	
+          templateUrl: '/partials/translations.html', 
+          controller: 'ChapterController'  
+	})
         .otherwise({
           redirectTo: '/'
         });
