@@ -1,7 +1,7 @@
 (function() {
 
   angular.module('obaui')
-    .controller('Controller', function($scope, $http, $routeParams) {
+    .controller('TranslationsController', function($scope, $http, $routeParams) {
       window.test26 = $scope;
       $scope.bible_id = $routeParams.bible_id || '';
       
@@ -23,8 +23,6 @@
           console.log('ERROR:: Failed to get /translations');
           console.log('ERROR:: Error code: ' + status);
         });
-
-
     });
 
 })();

@@ -38,14 +38,13 @@ var routes = {
 	BibleAPI.getTranslations(config.auth_token, q.bible_id, function(err, translations_res) { 
 	    if (err) { return res.status(500).json({error: err}); }
 	    if (translations_res.statusCode == 200) {
-		var processedRes = JSON.parse(translations_res);
+		var processedRes = JSON.parse(translations_res.body)
 		return res.json(processedRes);
 	    } else {
 		return res.status(translations_res.statusCode).json(translations_res.body);
 	    }
 	});
     }
-  
 };
 
 
