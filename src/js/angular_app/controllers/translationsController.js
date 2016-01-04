@@ -2,7 +2,6 @@
 
   angular.module('obaui')
     .controller('TranslationsController', function($scope, $http, $routeParams) {
-      window.test26 = $scope;
       $scope.bible_id = $routeParams.bible_id || '';
       
       // API path
