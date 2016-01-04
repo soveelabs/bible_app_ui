@@ -32,7 +32,19 @@ var routes = {
         return res.status(books_res.statusCode).json(books_res.body);
       }
     });
-  }
+  },
+    translations: function(req, res, next) {
+	var q = req.query;
+	BibleAPI.getTranslations(config.auth_token, q.bible_id, function(err, translations_res) { 
+	    if (err) { return res.status(500).json({error: err}); }
+	    if (translations_res.statusCode == 200) {
+		var processedRes = JSON.parse(translations_res.body)
+		return res.json(processedRes);
+	    } else {
+		return res.status(translations_res.statusCode).json(translations_res.body);
+	    }
+	});
+    }
 };
 
 
@@ -41,5 +53,6 @@ router.get('/', routes.index);
 router.get('/books', routes.books);
 //router.get('/chapters', routes.chapters);
 //router.get('/detect', routes.detect);
+router.get('/translations', routes.translations);
 
 exports = module.exports = router;
