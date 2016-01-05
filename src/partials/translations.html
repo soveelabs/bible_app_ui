@@ -1,2 +1,13 @@
 <h1>Available Translations</h1>
-{{translations_data}}
+<md-list>
+  <md-list-item class="md-3-line" ng-repeat="translation in translations_data">
+    <div class="md-list-item-text">
+      <h4>Bible: {{translation.bibleId}}</h4>
+      <p>Version: {{translation.version}}</p>
+      <p>Language Code: {{translation.langCode}}</p>
+    </div>
+    <p align="right">
+      <md-button class="md-primary" ng-href="/#/{{bible.bibleId}}/translations">Translations</md-button>
+    </p>
+  </md-list-item>
+</md-list>
