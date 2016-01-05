@@ -3,7 +3,6 @@
   angular.module('obaui')
     .controller('BooksController', function($scope, $http, $routeParams) {
 
-      window.test26 = $scope;
       $scope.bible_id = $routeParams.bible_id || '';
 	$scope.trans_bible_id = $routeParams.trans_bible_id || '';
 
