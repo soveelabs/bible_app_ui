@@ -1,10 +1,8 @@
 <h1>Bible books</h1>
 <md-list>
-  <md-list-item class="md-3-line" ng-repeat="book in book_data.books">
+  <md-list-item class="md-3-line" ng-repeat="book in books_data.books">
     <div class="md-list-item-text">
-      <a href="/#/{{bibleId}}/translations/{{trans_bible_id}}/books/{{book}}/chapters">{{book}}</a>
+      <a href="/#/{{bible_id}}/translations/{{trans_bible_id}}/books/{{book}}/chapters">{{book}}</a>
     </div>
   </md-list-item>
 </md-list>
-
-{{books_data}}
