@@ -6,22 +6,22 @@
     .config(function ($routeProvider) {
       $routeProvider
         .when('/', {
-          templateUrl: '/partials/home.html',
-          controller: 'MainController'
+          templateUrl: '/partials/bibles.html',
+          controller: 'BiblesController'
         })
         .when('/bibles/:bible_id?', {
           templateUrl: '/partials/bibles.html',
           controller: 'BiblesController'
         })
-        .when('/books/:bible_id?', {
+        .when('/:bible_id/translations/:trans_bible_id/books', {
           templateUrl: '/partials/books.html',
           controller: 'BooksController'
         })
-	.when('/:bible_id/translations', { 	
+	.when('/:bible_id/translations', {
           templateUrl: '/partials/translations.html', 
           controller: 'TranslationsController'  
 	})
-        .when('/chapters/:chapter_id?', {
+        .when('/:bible_id/translations/:trans_bible_id/books/:book_id/chapters', {
           templateUrl: '/partials/chapters.html', 
           controller: 'ChapterController'
         })

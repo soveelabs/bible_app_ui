@@ -44,6 +44,19 @@ var routes = {
 		return res.status(translations_res.statusCode).json(translations_res.body);
 	    }
 	});
+    },
+    chapters: function(req, res, next) {
+		var q = req.query;
+	console.log('doing this');
+	BibleAPI.getChapters(config.auth_token, q.bible_id, q.book_id, function(err, chapters_res) { 
+	    if (err) { return res.status(500).json({error: err}); }
+	    if (chapters_res.statusCode == 200) {
+		var processedRes = JSON.parse(chapters_res.body)
+		return res.json(processedRes);
+	    } else {
+		return res.status(chapters_res.statusCode).json(chapters_res.body);
+	    }
+	});
     }
 };
 
@@ -54,5 +67,6 @@ router.get('/books', routes.books);
 //router.get('/chapters', routes.chapters);
 //router.get('/detect', routes.detect);
 router.get('/translations', routes.translations);
+router.get('/chapters', routes.chapters);
 
 exports = module.exports = router;
