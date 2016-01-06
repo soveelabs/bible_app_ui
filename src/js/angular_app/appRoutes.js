@@ -25,6 +25,10 @@
           templateUrl: '/partials/chapters.html', 
           controller: 'ChapterController'
         })
+	.when('/:bible_id/translations/:trans_bible_id/books/:book_id/chapters/:chapter_id/export', {
+	  templateUrl: '/partials/exports.html',
+	  controller: 'TransmissionController'
+	})
         .otherwise({
           redirectTo: '/'
         });

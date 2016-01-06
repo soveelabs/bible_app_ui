@@ -46,8 +46,7 @@ var routes = {
 	});
     },
     chapters: function(req, res, next) {
-		var q = req.query;
-	console.log('doing this');
+	var q = req.query;
 	BibleAPI.getChapters(config.auth_token, q.bible_id, q.book_id, function(err, chapters_res) { 
 	    if (err) { return res.status(500).json({error: err}); }
 	    if (chapters_res.statusCode == 200) {
@@ -55,6 +54,20 @@ var routes = {
 		return res.json(processedRes);
 	    } else {
 		return res.status(chapters_res.statusCode).json(chapters_res.body);
+	    }
+	});
+    },
+    exports: function(req, res, next) {
+	var q = req.query;
+	console.log('doing this');
+	BibleAPI.exportFile(config.auth_token, q.bible_id, q.book_id, q.chapter_id, q.trans_bible_id, function(err, export_res) { 
+	    console.log('im back here' + export_res)
+	    if (err) { return res.status(500).json({error: err}); }
+	    if (export_res.statusCode == 200) {
+		var processedRes = JSON.parse(export_res.body)
+		return res.json(processedRes);
+	    } else {
+		return res.status(export_res.statusCode).json(export_res.body);
 	    }
 	});
     }
@@ -68,5 +81,6 @@ router.get('/books', routes.books);
 //router.get('/detect', routes.detect);
 router.get('/translations', routes.translations);
 router.get('/chapters', routes.chapters);
+router.get('/export', routes.exports);
 
 exports = module.exports = router;
