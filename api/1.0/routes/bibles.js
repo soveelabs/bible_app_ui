@@ -59,9 +59,7 @@ var routes = {
     },
     exports: function(req, res, next) {
 	var q = req.query;
-	console.log('doing this');
 	BibleAPI.exportFile(config.auth_token, q.bible_id, q.book_id, q.chapter_id, q.trans_bible_id, function(err, export_res) { 
-	    console.log('im back here' + export_res)
 	    if (err) { return res.status(500).json({error: err}); }
 	    if (export_res.statusCode == 200) {
 		var processedRes = JSON.parse(export_res.body)
