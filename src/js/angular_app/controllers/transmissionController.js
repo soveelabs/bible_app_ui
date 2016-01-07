@@ -1,23 +1,24 @@
 (function() {
 
   angular.module('obaui')
-    .controller('ChapterController', function($scope, $http, $routeParams) {
+    .controller('TransmissionController', function($scope, $http, $routeParams) {
 
       $scope.bible_id = $routeParams.bible_id || '';
 	$scope.book_id = $routeParams.book_id || '';
-	$scope.trans_bible_id = $routeParams.trans_bible_id || '';	
+	$scope.chapter_id = $routeParams.chapter_id || '';
+	$scope.trans_bible_id = $routeParams.trans_bible_id || '';
 
       // API path
       var apiPath = '/api/1.0';
-      var apiUrl = apiPath + '/bibles/chapters';
+      var apiUrl = apiPath + '/bibles/export';
       //apiUrl += $scope.bible_id ? '/' + $scope.bible_id : '';
-      apiUrl += '?token=25142499049aa20261871b2db25eea92a5fe4e72&bible_id=' + $scope.bible_id + '&book_id=' + $scope.book_id;
+      apiUrl += '?token=25142499049aa20261871b2db25eea92a5fe4e72&bible_id=' + $scope.bible_id + '&book_id=' + $scope.book_id + '&chapter_id=' + $scope.chapter_id + '&trans_bible_id=' + $scope.trans_bible_id;
       
 
       // ======== HTTP requests
       $http.get(apiUrl)
         .success(function(data, status, headers, config) {
-          $scope.chapters_data = data;
+          $scope.transmission_data = data;
         })
         .error(function(data, status, headers, config) {
           // handle errors

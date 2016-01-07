@@ -1,1 +1,9 @@
 <h1>chapters</h1>
+<md-list>
+  <md-list-item class="md-3-line" ng-repeat="chapter in chapters_data.chapters">
+    <div class="md-list-item-text">
+      <a href="/#/{{bible_id}}/translations/{{trans_bible_id}}/books/{{book_id}}/chapters/{{chapter.chapter}}/export">{{chapter.chapter}}</a>
+    </div>
+  </md-list-item>
+</md-list>
+

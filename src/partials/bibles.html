@@ -10,12 +10,11 @@
     <md-list>
       <md-list-item class="md-3-line" ng-repeat="bible in bible_data">
         <div class="md-list-item-text">
-          <h4>BibleId: {{bible.bibleId}}</h4>
+          <h4>Bible: {{bible.bibleId}}</h4>
           <h4>Version: {{bible.version}}</h4>
-          <h4>Url: {{bible.bibleUrl}}</h4>
         </div>
         <p align="right">
-          <md-button class="md-primary" ng-href="/#/books/{{bible.bibleId}}" target="_blank">Get Books</md-button>
+          <md-button class="md-primary" ng-href="/#/{{bible.bibleId}}/translations">Translations</md-button>
         </p>
       </md-list-item>
     </md-list>
