@@ -70,6 +70,19 @@ var routes = {
 		return res.status(export_res.statusCode).json(export_res.body);
 	    }
 	});
+    },
+  
+  import: function(req, res, next) {
+  var q = req.query;
+  BibleAPI.createBible(config.auth_token, q.bible_id, q.bible_langCode,q.bible_langCode,q.bible_url, function(err, import_res) { 
+      if (err) { return res.status(500).json({error: err}); }
+      if (import_res.statusCode == 200) {
+    var processedRes = JSON.parse(import_res.body)
+    return res.json(processedRes);
+      } else {
+    return res.status(import_res.statusCode).json(import_res.body);
+      }
+  });
     }
 };
 
@@ -78,7 +91,7 @@ router.get('/', routes.index);
 //router.get('/:bible_id', routes.index);
 router.get('/books', routes.books);
 //router.get('/chapters', routes.chapters);
-//router.get('/detect', routes.detect);
+router.get('/import', routes.import);
 router.get('/translations', routes.translations);
 router.get('/chapters', routes.chapters);
 router.get('/export', routes.exports);

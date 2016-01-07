@@ -61,14 +61,32 @@
 
     }]); /* END MainController */
 
-  function DialogController($scope, $mdDialog) {
+  function DialogController($scope, $mdDialog, $http) {
     $scope.hide = function() {
+      console.log("hiiiiiiiiiiiiiiii");
       $mdDialog.hide();
     };
     $scope.cancel = function() {
       $mdDialog.cancel();
     };
     $scope.answer = function(answer) {
+      var apiPath = '/api/1.0';
+      var apiUrl = apiPath + '/bibles/import';
+      //apiUrl += $scope.bible_id ? '/' + $scope.bible_id : '';
+      apiUrl += '?token=25142499049aa20261871b2db25eea92a5fe4e72&bible_id=' + $scope.bible.id + '&bible_langCode=' + $scope.bible.languageCode + '&bible_version=' + $scope.bible.version + '&bible_url=' + $scope.bible.url;
+      
+
+      // ======== HTTP requests
+      $http.get(apiUrl)
+        .success(function(data, status, headers, config) {
+          $scope.bible_import_data = data;
+        })
+        .error(function(data, status, headers, config) {
+          // handle errors
+          console.log('ERROR:: Failed to get /bibles');
+          console.log('ERROR:: Error code: ' + status);
+        });
+
       $mdDialog.hide(answer);
     };
   }
