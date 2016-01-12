@@ -72,7 +72,7 @@ var routes = {
   
   import: function(req, res, next) {
   var q = req.query;
-  BibleAPI.createBible(config.auth_token, q.bible_id, q.bible_langCode,q.bible_langCode,q.bible_url, function(err, import_res) { 
+  BibleAPI.createBible(config.auth_token, q.bible_id, q.bible_langCode,q.bible_version,q.bible_url, function(err, import_res) { 
       if (err) { return res.status(500).json({error: err}); }
       if (import_res.statusCode == 200) {
     var processedRes = JSON.parse(import_res.body)
@@ -81,7 +81,20 @@ var routes = {
     return res.status(import_res.statusCode).json(import_res.body);
       }
   });
-    }
+    },
+
+  createTranslation: function(req, res, next) {
+  var q = req.query;
+  BibleAPI.createTranslation(config.auth_token, q.bible_id, q.bible_langCode,q.bible_version,q.bible_sourceBibleId,q.bible_status, function(err, createTranslation_res) { 
+      if (err) { return res.status(500).json({error: err}); }
+      if (createTranslation_res.statusCode == 200) {
+    var processedRes = JSON.parse(createTranslation_res.body)
+    return res.json(processedRes);
+      } else {
+    return res.status(createTranslation_res.statusCode).json(createTranslation_res.body);
+      }
+  });
+  }
 };
 
 
@@ -93,5 +106,6 @@ router.get('/import', routes.import);
 router.get('/translations', routes.translations);
 router.get('/chapters', routes.chapters);
 router.get('/export', routes.exports);
+router.get('/createTranslation', routes.createTranslation);
 
 exports = module.exports = router;
