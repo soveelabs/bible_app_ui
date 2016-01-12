@@ -1,5 +1,11 @@
 <h1>Available Translations</h1>
+<div align="right">
+  <md-button class="md-raised" aria-label="Create Translation" ng-click="showCreateTranslation($event)">
+     Create Translation
+  </md-button>
+</div>
 <md-list>
+
   <md-list-item class="md-3-line" ng-repeat="translation in translations_data">
     <div class="md-list-item-text">
       <h4>Bible: {{translation.bibleId}}</h4>
