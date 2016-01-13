@@ -113,7 +113,7 @@
     };
   }
 
-  function CreateTranslationController($scope, $mdDialog, $http, $routeParams) {
+  function CreateTranslationController($scope, $mdDialog, $http, $routeParams, $route) {
     $scope.bible_sourceBibleId = $routeParams.bible_id;
     $scope.hide = function() {
       $mdDialog.hide();
@@ -132,6 +132,7 @@
       $http.get(apiUrl)
         .success(function(data, status, headers, config) {
           $scope.bible_translation_data = data;
+          $route.reload();
         })
         .error(function(data, status, headers, config) {
           // handle errors
