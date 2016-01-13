@@ -59,11 +59,33 @@
 				});
 			};
 
+      $scope.showCreateTranslation = function(ev){
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+        $mdDialog.show({
+          controller: CreateTranslationController,
+          templateUrl: '/partials/createTranslation.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: useFullScreen
+        })
+        .then(function(answer) {
+          $scope.status = 'You said the information was "' + answer + '".';
+        }, function() {
+          $scope.status = 'You cancelled the dialog.';
+        });
+        $scope.$watch(function() {
+          return $mdMedia('xs') || $mdMedia('sm');
+        }, function(wantsFullScreen) {
+          $scope.customFullscreen = (wantsFullScreen === true);
+        });
+      };
+
+
     }]); /* END MainController */
 
   function DialogController($scope, $mdDialog, $http) {
     $scope.hide = function() {
-      console.log("hiiiiiiiiiiiiiiii");
       $mdDialog.hide();
     };
     $scope.cancel = function() {
@@ -80,6 +102,37 @@
       $http.get(apiUrl)
         .success(function(data, status, headers, config) {
           $scope.bible_import_data = data;
+        })
+        .error(function(data, status, headers, config) {
+          // handle errors
+          console.log('ERROR:: Failed to get /bibles');
+          console.log('ERROR:: Error code: ' + status);
+        });
+
+      $mdDialog.hide(answer);
+    };
+  }
+
+  function CreateTranslationController($scope, $mdDialog, $http, $routeParams, $route) {
+    $scope.bible_sourceBibleId = $routeParams.bible_id;
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+    $scope.answer = function(answer) {
+      var apiPath = '/api/1.0';
+      var apiUrl = apiPath + '/bibles/createTranslation';
+      //apiUrl += $scope.bible_id ? '/' + $scope.bible_id : '';
+      apiUrl += '?token=25142499049aa20261871b2db25eea92a5fe4e72&bible_id=' + $scope.bible_id + '&bible_langCode=' + $scope.bible_languageCode + '&bible_version=' + $scope.bible_version + '&bible_sourceBibleId=' + $scope.bible_sourceBibleId + '&bible_status=' + $scope.bible_status;
+      
+
+      // ======== HTTP requests
+      $http.get(apiUrl)
+        .success(function(data, status, headers, config) {
+          $scope.bible_translation_data = data;
+          $route.reload();
         })
         .error(function(data, status, headers, config) {
           // handle errors
