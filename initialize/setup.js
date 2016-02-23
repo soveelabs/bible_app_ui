@@ -6,9 +6,8 @@ var express = require('express'),
     methodOverride = require('method-override'),
     config = require('../config/config'),
     session = require('express-session'),
-    auth = require('node-auth'),
-    expstate = require('express-state'),
-    health = require('node-health');
+    expstate = require('express-state');
+//    health = require('node-health');
 
 function setup(app) {
   // setup directory where views are localed
@@ -35,10 +34,10 @@ function setup(app) {
   }));
 
   // health
-  app.use(health);
+//  app.use(health);
 
   // Auth
-  mw = auth({
+/*  mw = auth({
     auth: {
       host: config.auth_url
     }
@@ -46,7 +45,7 @@ function setup(app) {
   app.use('/api', mw.api);
   app.use(/^\/(?!api(\/|$)).*$/, mw.app);
   app.use(mw.routes);
-
+*/
   // Compress all requests
   app.use(compress());
 

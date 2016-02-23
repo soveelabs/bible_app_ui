@@ -43,9 +43,6 @@
     "main-bower-files": "^2.6.2",
     "method-override": "~2.3.0",
     "morgan": "~1.5.0",
-    "newrelic": "https://github.com/soveelabs/node-newrelic.git",
-    "node-auth": "git+https://firma8deploy:NGSUqNqLMnmSLt7qd@bitbucket.org/firma8/nodeauth.git#v2.0.2",
-    "node-health": "git+https://e35b04c1ca33733d7b97ab0ca4abda1aca97c2d8:x-oauth-basic@github.com/soveelabs/node-health.git",
     "request": "^2.53.0",
     "require-dir": "^0.3.0",
     "serve-favicon": "~2.2.0"

@@ -1,6 +1,6 @@
-var newrelic = require('newrelic'),
-    express = require('express'),
+var express = require('express'),
     app = express();
+//var newrelic = require('newrelic');
 
 // require default initializer
 require('./initialize/setup')(app);
